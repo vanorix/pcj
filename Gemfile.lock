@@ -156,6 +156,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    microsoft_graph (0.1.1)
+      nokogiri (~> 1.6.7.1)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
@@ -316,6 +318,7 @@ DEPENDENCIES
   hirb
   jbuilder (~> 2.0)
   jquery-rails
+  microsoft_graph
   mysql2 (~> 0.4.4)
   oauth2
   puma
