@@ -70,3 +70,6 @@ group :development do
 end
 
 gem 'puma'
+gem 'hirb'
+gem 'oauth2'
+gem 'activerecord-session_store'

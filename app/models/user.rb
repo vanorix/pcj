@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
     true
   end
 
-  private  def downcase_email
+  private def downcase_email
     self.email = email.downcase
   end
 
@@ -105,6 +105,7 @@ class User < ActiveRecord::Base
 
   private def valid_domains
     %w(ce.pucmm.edu.do)
+    %w(gmail.com)
   end
 
   private def validate_email_domain
