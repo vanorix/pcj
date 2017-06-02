@@ -3,7 +3,7 @@ module StudentPortal
     before_action :logged_in_user
 
     before_action :load_user
-    before_action :correct_user
+    # before_action :correct_user
 
     private def load_user
       @user = User.find_by_id(params[:user_id]) or not_found

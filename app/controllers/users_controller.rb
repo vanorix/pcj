@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, except: [:new, :create]
-  before_action :correct_user, except: [:index, :destroy, :new, :create, :connect]
+  # before_action :correct_user, except: [:index, :destroy, :new, :create, :connect]
   before_action :admin_user, only: [:index, :destroy]#USE CANCAN INSTEAD OF FILTERS!!!
 
   def index
@@ -18,7 +18,6 @@ class UsersController < ApplicationController
 
   def connect
     connecting_user = User.find_by_connection_token(params[:connection_token])
-
     if connecting_user.present?
       if connecting_user.connect(current_user)
         flash[:info] = "You are now connected with #{connecting_user.name}"
@@ -28,7 +27,6 @@ class UsersController < ApplicationController
     else
       flash[:warning] = 'Invalid Connection Link'
     end
-
     redirect_to root_url
   end
 
@@ -75,7 +73,7 @@ class UsersController < ApplicationController
     end
   end
 
-  private  def user_params
+  private def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 

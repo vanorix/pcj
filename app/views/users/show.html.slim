@@ -16,7 +16,7 @@ div.container
     p
       strong= "#{t('.connection_url')}:"
       br
-      = link_to user_connect_url(@user.connection_token), user_connect_url(@user.connection_token)
+      /= link_to user_connect_url(@user.connection_token), user_connect_url(@user.connection_token)
 
     = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn btn-default'
     '
