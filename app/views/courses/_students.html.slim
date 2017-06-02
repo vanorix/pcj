@@ -1,0 +1,37 @@
+div.container
+  h3 = t('.header')
+  table.table.table-striped
+    thead
+      tr
+        th= t('.student_name')
+        th= t('.student_email')
+        th= t('.student_remove')
+    tbody
+      - @course.students.each do |student|
+        tr
+          td= student.name
+          td= student.email
+          td
+            = link_to remove_student_course_path(id: @course.id, student_id: student.id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+              do
+                span.fa.fa-times aria-hidden='true'
+              end
+
+  .container.alert-info
+    = form_for @course, url: {action: 'add_students', id: @course.id}, html: { method: 'POST', class: "form form-horizontal course", id: 'add_student' } do |f|
+      .form-group
+        .col-md-8.offset-4
+          = f.collection_check_boxes(:students, @course.unadded_students, :id, :name_with_email) do |b|
+            .row
+              = b.label(class: 'checkbox') do
+                .col-xs-offset-1.col-xs-1
+                  = b.check_box(class: 'checkbox')
+                .col-xs-10-offset-1
+                  = b.object.name_with_email
+
+      .form-group
+        .col-md-12
+          = f.submit t('.student_add'), :class => 'btn btn-primary'
+
+
+  / = select('course', 'students', @course.students.map(&:name),  include_blank: true)

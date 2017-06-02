@@ -1,0 +1,70 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+/*
+REFACTOR COLORS BY MOVING TO THEIR OWN FILE!!!
+ex:
+$saving-color: #595959;
+*/
+
+.centered-text {
+    text-align:center
+}
+
+.jumbotron {
+  hr {
+    border-top-color: #d5d5d5;
+  }
+}
+
+.code-group {
+  .code-editor {
+    position: relative;
+    width: 100%;
+    height: 25em;
+    &.tall-editor {
+      height: 40em;
+    }
+  }
+  .mapping-hidden-text-area {
+    display: none;
+  }
+  .code-save-msg {
+    &.saved {
+      color: #468847;
+      background: #E2F9E3;
+      border: 1px solid #99CC99;
+      border-radius: 0.25em;
+    }
+    &.saving {
+      color: #804000;
+      background: #ffa64d;
+      border: 1px solid #ff8000;
+      border-radius: 0.25em;
+    }
+    &.failed {
+      color: #330000;
+      background: #ff4d4d;
+      border: 1px solid #cc0000;
+      border-radius: 0.25em;
+    }
+  }
+}
+
+.noresize {
+  resize: none;
+}

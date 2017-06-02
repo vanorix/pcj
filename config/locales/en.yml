@@ -1,0 +1,221 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: 'Hello world'
+  helpers:
+    label:
+      session:
+        remember_me: ''
+
+  layouts:
+    navbar:
+      sign_up: 'Sign Up'
+      log_in: 'Log In'
+      log_out: 'Log Out'
+      account: 'Account'
+      profile: 'Profile'
+      student_portal: 'Student Portal'
+      professor_portal: 'Professor Portal'
+      users: 'Users'
+      connections: 'Connections'
+      administration: 'Administration'
+
+
+  sessions:
+    new:
+      log_in_header: 'Log In'
+      submit_button: 'Log In'
+
+  shared:
+    countdown_clock:
+      days_label: Days
+      hours_label: Hours
+      minutes_label: Minutes
+      seconds_label: Seconds
+
+  assignments:
+    problems:
+      problem_id: ID
+      problem_name: Name
+      problem_remove: Remove
+      problem_add: Add Problem
+
+
+  courses:
+    new:
+      title: New Course
+    edit:
+      general_desc_tab: General Description
+      assignments_tab: Assignments
+    students:
+      header: Student
+      student_name: Name
+      student_email: Email
+      student_remove: Remove
+      student_add: Add Student
+    assignments:
+      name: Name
+      assignment_add: Add Assignment
+      assignment_remove: Remove
+
+  problems:
+    edit:
+      general_desc_tab: General Description
+      test_cases_tab: Test Cases
+      output_gen_tab: Output Generator
+      checker_tab: Checker
+      outputs_generation_in_progress_message: Problem modification forms will be back once outputs have been generated
+    form:
+      time_limit_label: Time Limit(seconds)
+    test_cases_form:
+      upload_input_files_button: Upload Files
+      input_files_uploaded_label: Input files uploaded at %{uploaded_date}
+    output_gen_form:
+      generate_outputs_button: Generate
+      outputs_generated_at_label: Output files generated at %{generation_date}
+    test_cases_table:
+      header: Generated Files(Select Test Cases For Grading)
+      input_file: Input
+      output_file: Output
+      group_test_cases_button: Group Selected Test Cases
+      add_all_individual_button: Add Test Cases as Separate Entities
+    selected_test_cases_table:
+      header: Selected Test Cases
+      ungroup_test_cases_header: Ungroup
+      input_output_files: Inputs/Outputs
+      weight: Weight
+      update_group_weights_button: Update Weights
+
+  users:
+    administration:
+      title: Administration
+      manage_courses: Manage Courses
+      manage_assignments: Manage Assignments
+      manage_problems: Manage Problems
+    connections:
+      title: 'My Connections'
+    courses:
+      course_name: Course Name
+      new_course_button: New Course
+    edit:
+      change_gravatar: 'change'
+    new:
+      sign_up_header: 'Sign Up'
+    assignments:
+      name: Name
+      start_time: Start Time
+      end_time: End Time
+      new_assignment_button: New Assignment
+    problems:
+      name: Name
+      new_problem_button: New Problem
+      problem_id: ID
+      polygon_upload_button: Polygon Upload
+    show:
+      connection_url: 'Connection URL(share with friends/students)'
+      title: Profile
+  professor_portal:
+    shared:
+      header:
+        page_header_title: Professor Portal
+      solutions_and_stats_nav:
+        solutions_path_text: Student Solutions
+        stats_path_text: Statistics
+    courses:
+      index:
+        title: Owned Courses
+        course_name_header: Course
+    assignments:
+      index:
+        title: Owned Assignments
+        assignment_name_header: Assignment
+        start_time_header: Start Time
+        end_time_header: End Time
+        duration_header: Duration
+      student_solutions:
+        submissions_container_title: Submissions
+        problem_name: Problem
+        submitted_at: Submitted at
+        submission_status: Status
+        submission_info: Info
+        submission_grade: Grade
+        submission_view: View
+        submission_view_btn: View
+        student_work_title: Student Work So Far
+        refresh_button: Refresh
+      student_statistics:
+        student_name: Student
+  student_portal:
+    shared:
+      header:
+        page_header_title: Student Portal
+      problems_nav:
+        problems_path_text: Problems
+        submissions_path_text: Submissions
+    courses:
+      index:
+        title: My Courses
+        course_name_header: Course
+        professor_name_header: Professor
+    assignments:
+      index:
+        title: My Assignments
+        assignment_name_header: Assignment
+        start_time_header: Start Time
+        end_time_header: End Time
+        duration_header: Duration
+      submissions:
+        problem_name: Problem
+        submitted_at: Submitted at
+        submission_status: Status
+        submission_info: Info
+        submission_grade: Grade
+        submission_view: View
+        submission_view_btn: View
+    problems:
+      assignment_start_countdown:
+        countdown_info_label: "%{assignment_name} problems will be available in"
+        assignment_started_message: The problems are available and you now are being redirected.
+      index:
+        title: Problems
+        problem_name_header: Name
+        problem_grade_header: Grade
+        time_remaining_text: 'Time remaining until deadline reached:'
+        deadline_reached_message: The deadline for this problem set has been reached. You may still submit for 0 points.
+      problem_description:
+        time_limit_label: "time limit: %{time_limit}s"
+        statement_header: Statement
+        input_format_header: Input Format
+        output_format_header: Output Format
+        examples_header: Examples
+        notes_header: Notes
+      show:
+        test_solution_button: Test Solution
+        submit_solution_button: Submit Solution
+        run_modal_title: Test Solution
+        on_submit_msg: Submitting...
+      test_solution_form:
+        test_solution_button: Run
+        on_submit_msg: Running...
+    submissions:
+      show:
+        title: Submission for %{problem} by %{user}(%{email})

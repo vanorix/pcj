@@ -1,0 +1,63 @@
+= render partial: 'professor_portal/shared/header'
+
+.container
+  = render partial: 'professor_portal/shared/solutions_and_stats_nav'
+  .jumbotron
+    h3.text-center = t '.submissions_container_title'
+    table.table.table-hover
+      thead
+        tr
+          th= t '.problem_name'
+          th= t '.submitted_at'
+          th= t '.submission_status'
+          th= t '.submission_grade'
+          th= t '.submission_info'
+          th= t '.submitted_by'
+          th= t '.submission_view'
+      tbody
+        - @submissions.each do |submission|
+          tr.alert class=status_class_for(submission)
+            td = submission.problem.name
+            td = submission.created_at.strftime("%I:%M:%S %p on %m/%d/%Y(ET)")
+            td = submission.status
+            td = submission.grade
+            td = submission.info
+            td = submission.user.name_with_email
+            td = link_to t('.submission_view_btn'), student_portal_submission_path(submission), class: 'btn btn-info btn-xs', target: '_blank'
+    = will_paginate @submissions
+.container
+  .jumbotron
+    h3.text-center = t '.student_work_title'
+    = form_for :student_portal_problem_solutions, remote: true, url: user_solutions_student_portal_problem_solutions_path, method: 'post', html: { :class => 'form form-horizontal course', :id => 'student_solutions', :'data-type' => 'json' } do |f|
+      = f.hidden_field :course_id, value: @course.id
+      = f.hidden_field :assignment_id, value: @assignment.id
+      .form-group
+        .col-lg-12
+          = f.select :user_id, student_work_so_far_dropdown_for(@course), { include_blank: true }, { class: 'form-control' }
+
+    .container
+      - @assignment.problems.each do |problem|
+        h4 = problem.name
+        .form-group
+          .code-group
+            .navbar.navbar-default
+              .container-fluid
+                .navbar-header
+                  .navbar-brand  Language
+                .navbar-left.navbar-form
+                  .form-group
+                    select.form-control.code-select name="problem[language]" id="problem_language_#{problem.id}" disabled=true
+                      option value=''
+                      - language_selection_options.each do |opt|
+                        option value=opt[:value] = opt[:text]
+            .code-editor id="editor_#{problem.id}"
+            .mapping-hidden-text-area = text_area_tag "problem_text_#{problem.id}"
+
+coffee:
+  $('.code-group').each(->
+    editor = new CodeEditor($(@))
+    editor.initialize_default()
+    editor.inverse_editor()
+  )
+
+  new SolutionsPollSetter()

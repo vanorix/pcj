@@ -1,0 +1,37 @@
+= render partial: 'student_portal/shared/problems_nav'
+
+.container
+  = render partial: 'problem_description'
+
+  = form_for @problem_solution, url: submit_student_portal_problem_solution_path(@problem_solution), method: 'post', html: { id: 'submit_problem_solution', class: "form form-horizontal problem" } do |f|
+    .form-group
+      .code-group data-autosave_path=save_code_student_portal_problem_solution_path(@problem_solution)
+        .navbar.navbar-default
+          .container-fluid
+            .navbar-header
+              .navbar-brand  Language
+            .navbar-left.navbar-form
+              .form-group
+                select.form-control.code-select name="student_portal_problem_solution[language]" id='#student_portal_problem_language'
+                  option value=''
+                  - language_selection_options.each do |opt|
+                    option value=opt[:value] selected=opt[:value].eql?(@problem_solution.language) = opt[:text]
+            p.navbar-text.code-save-msg id='code_save_msg'
+        .code-editor id='editor'
+        .mapping-hidden-text-area = f.text_area :code, :class => 'form-control'
+    .form-group
+      .col-lg-offset-2.col-lg-10
+        .pull-right
+          = content_tag :a, t('.test_solution_button'), id: 'foobar', href: "#run_modal", class: 'btn btn-info', data: {toggle: 'modal'}
+          '
+          = f.submit t('.submit_solution_button'), name: 'student_portal_problem_solution[submit]', class: 'btn btn-primary', data: { disable_with: t('.on_submit_msg') }
+
+= modal_dialog id: "run_modal",
+         header: { show_close: true, dismiss: 'modal', title: t('.run_modal_title') },
+         body:   { content:  (render partial: 'test_solution_form') },
+         footer: { content: content_tag(:a, 'Close', href: '#run_modal',class: 'btn', data: {toggle: 'modal'}) }
+
+coffee:
+  code_editor = new CodeEditor $('#submit_problem_solution .code-group')
+  code_editor.initialize_default()
+  code_editor.initialize_autosave()

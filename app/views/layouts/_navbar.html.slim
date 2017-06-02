@@ -1,0 +1,46 @@
+nav.navbar.navbar-inverse
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href=root_path  PCJ
+    #navbar.navbar-collapse.collapse
+      ul.nav.navbar-nav
+        li.active
+          a href=root_path  Home
+        li
+          a href="#about"  About
+        li
+          a href="#contact"  Contact
+
+      ul.nav.navbar-nav.navbar-right
+        - if logged_in?
+          - if current_user.professor?
+            li
+              = link_to(t('.professor_portal') , user_professor_portal_courses_path(current_user))
+          li
+            = link_to(t('.student_portal') , user_student_portal_courses_path(current_user))
+          li.dropdown
+            a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              | #{t('.account')}
+              span.caret
+            ul.dropdown-menu
+              li
+                = link_to t('.profile'), current_user
+              li
+                = link_to t('.connections'), connections_user_path(current_user)
+              - if current_user.professor?
+                li
+                  = link_to t('.administration'), administration_user_path(current_user)
+              li.divider role="separator"
+              li
+                = link_to t('.log_out'), logout_path, method: :delete
+          li
+            = image_tag(gravatar_url(current_user.email, 48))
+
+        - else
+          li
+            = link_to(t('.log_in'), @login_to_ms)

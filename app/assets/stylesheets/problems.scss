@@ -1,0 +1,15 @@
+.problem {
+  .form-group{
+    textarea.form-control {
+      height: 9em;
+    }
+
+  }
+  .navbar {
+    margin-bottom: 0em;
+  }
+}
+
+#test-cases-form, #output-gen-form, #checker-form {
+  display: none;
+}
