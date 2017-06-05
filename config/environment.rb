@@ -15,3 +15,7 @@ ActionMailer::Base.smtp_settings = {
   # authentication: 'login',
   # enable_starttls_auto: true
 }
+
+ENV['AWS_ACCESS_KEY'] = 'AKIAJ2WTHO7NEHBHN3IA'
+ENV['AWS_SECRET_KEY'] = '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'
+ENV['AWS_REGION'] = 'us-east-1'
