@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   #include SessionsHelper
   include AuthHelper
-
+  include SessionsHelper
+  
   def index
     @login_to_ms = get_login_url
   end
